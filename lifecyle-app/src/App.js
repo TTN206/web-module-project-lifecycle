@@ -7,31 +7,29 @@ class App extends React.Component {
 
   state = {
     users: [],
-    followers: []
+    followers: [],
   }
 
   componentDidMount() {
     axios // Fetch the User Data
       .get('https://api.github.com/users/ttn206')
       .then((res)=>{ // Display the User Data
+        console.log(res)
         this.setState({
-          users: res.data
+          users: res.data,
         })
       })
-      .catch((err)=>{
-        console.log('unable to get user info', err)
-      })
+      .catch(err => console.error('unable to get user info', err))
 
     axios // Fetch the User's Followers
       .get('https://api.github.com/users/ttn206/followers') 
       .then((res)=>{
+        console.log(res)
         this.setState({
-          followers: res.data
+          followers: res.data,
         })
       })
-      .catch((err)=>{
-        console.log('unable to get user followers', err)
-      })
+      .catch(err => console.error('unable to get users followers', err))
   }
 
 

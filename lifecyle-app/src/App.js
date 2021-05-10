@@ -20,24 +20,13 @@ class App extends React.Component {
         })
       })
       .catch(err => console.error('unable to get user info', err))
-
-    axios // Fetch the User's Followers
-      .get('https://api.github.com/users/ttn206/followers') 
-      .then((res)=>{
-        console.log(res)
-        this.setState({
-          followers: res.data,
-        })
-      })
-      .catch(err => console.error('unable to get users followers', err))
   }
-
 
   render(){
     return (
       <div>
-        <h1>SHOW ME THE MONEY!</h1>
-        <UserCard />
+        <h1>This is the User Card Info</h1>
+        <UserCard users={this.state.users}/>
       </div>
       )
   }
